@@ -1,6 +1,6 @@
 [package]
 name = "unisub"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2018"
 description = "A Pub/Sub library for Rust backed by Postgres"
 authors = ["Nicholas Rempel <nbrempel@gmail.com>"]
@@ -10,7 +10,7 @@ homepage = "https://nrempel.com"
 documentation = "https://docs.rs/unisub"
 keywords = ["queue", "pub-sub", "postgres"]
 categories = ["asynchronous", "database", "web-programming"]
-include = ["src/**/*", "migrations/**/*"]
+include = ["src/**/*", "migrations/**/*", ".sqlx/*.json"]
 readme = "README.md"
 
 [[bin]]
