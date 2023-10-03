@@ -60,11 +60,11 @@ use sqlx::PgPool;
 
 #[tokio::main]
 async fn main() -> Result<(), unisub::Error> {
-let pool = PgPool::connect("your_database_url").await?;
-migrate(&pool).await?;
-let mut pubsub = PubSub::new(pool).await?;
-pubsub.add_topic("my_topic").await?;
-Ok(())
+    let pool = PgPool::connect("your_database_url").await?;
+    migrate(&pool).await?;
+    let mut pubsub = PubSub::new(pool).await?;
+    pubsub.add_topic("my_topic").await?;
+    Ok(())
 }
 ```
 
@@ -78,10 +78,10 @@ use sqlx::PgPool;
 
 #[tokio::main]
 async fn main() -> Result<(), unisub::Error> {
-let pool = PgPool::connect("your_database_url").await?;
-let mut pubsub = PubSub::new(pool).await?;
-pubsub.push("my_topic", b"My message").await?;
-Ok(())
+    let pool = PgPool::connect("your_database_url").await?;
+    let mut pubsub = PubSub::new(pool).await?;
+    pubsub.push("my_topic", b"My message").await?;
+    Ok(())
 }
 ```
 
@@ -93,13 +93,25 @@ use sqlx::PgPool;
 
 #[tokio::main]
 async fn main() -> Result<(), unisub::Error> {
-let pool = PgPool::connect("your_database_url").await?;
-let mut pubsub = PubSub::new(pool).await?;
-pubsub.subscribe("my_topic", |message| {
-println!("Received message: {:?}", message);
-async { Ok(()) }
-}).await?;
-Ok(())
+    // Connect to the database
+    let pool = PgPool::connect("your_database_url").await?;
+    let mut pubsub = PubSub::new(pool).await?;
+
+    // Subscribe to the topic
+    pubsub.subscribe("my_topic", |message| {
+        async {
+            // Print the received message
+            println!("Received message: {:?}", message);
+
+            // Simulate some asynchronous work with the received message
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+            println!("Finished processing message: {:?}", message);
+
+            Ok(())
+        }
+    }).await?;
+
+    Ok(())
 }
 ```
 
