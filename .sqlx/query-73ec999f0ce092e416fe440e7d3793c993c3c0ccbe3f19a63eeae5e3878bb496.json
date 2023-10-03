@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT messages.id\n            FROM messages, topics\n            WHERE\n                topics.name = $1 AND\n                messages.topic_id = topics.id AND\n                messages.status = 'new'\n            ORDER BY messages.published_at ASC\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "id",
+        "type_info": "Int4"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Text"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "73ec999f0ce092e416fe440e7d3793c993c3c0ccbe3f19a63eeae5e3878bb496"
+}

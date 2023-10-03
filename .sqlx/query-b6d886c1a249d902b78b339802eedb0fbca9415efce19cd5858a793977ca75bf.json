@@ -1,0 +1,23 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                                SELECT messages.content\n                                FROM messages, topics\n                                WHERE\n                                    messages.id = $1 AND\n                                    topics.name = $2 AND\n                                    messages.topic_id = topics.id AND\n                                    messages.status = 'new'\n                                LIMIT 1\n                                ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "content",
+        "type_info": "Bytea"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4",
+        "Text"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "b6d886c1a249d902b78b339802eedb0fbca9415efce19cd5858a793977ca75bf"
+}

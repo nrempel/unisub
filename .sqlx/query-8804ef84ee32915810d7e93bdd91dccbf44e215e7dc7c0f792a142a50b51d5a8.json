@@ -1,0 +1,22 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n                SELECT messages.content\n                FROM messages\n                WHERE messages.id = $1\n                FOR UPDATE SKIP LOCKED\n                ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "content",
+        "type_info": "Bytea"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Int4"
+      ]
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "8804ef84ee32915810d7e93bdd91dccbf44e215e7dc7c0f792a142a50b51d5a8"
+}

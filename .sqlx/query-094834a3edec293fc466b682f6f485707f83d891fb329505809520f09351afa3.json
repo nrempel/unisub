@@ -1,0 +1,15 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            INSERT INTO messages (topic_id, content)\n            SELECT id, $2\n            FROM topics WHERE name = $1\n            ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Left": [
+        "Text",
+        "Bytea"
+      ]
+    },
+    "nullable": []
+  },
+  "hash": "094834a3edec293fc466b682f6f485707f83d891fb329505809520f09351afa3"
+}
